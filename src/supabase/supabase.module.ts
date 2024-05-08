@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 import { SupabaseService } from './supabase.service';
 import { SupabaseStrategy } from './supabase.strategy';
 

@@ -5,15 +5,15 @@ import { SupabaseService } from './supabase.service';
 
 @Injectable()
 export class SupabaseStrategy extends PassportStrategy(Strategy) {
-    constructor(private readonly supabaseService: SupabaseService) {
-        super();
-    }
+  constructor(private readonly supabaseService: SupabaseService) {
+    super();
+  }
 
-    async validate(email: string, password: string): Promise<any> {
-        const { user, error } = await this.supabaseService.signIn(email, password);
-        if (error) {
-            throw error;
-        }
-        return user;
+  async validate(email: string, password: string): Promise<any> {
+    const { user, error } = await this.supabaseService.signIn(email, password);
+    if (error) {
+      throw error;
     }
+    return user;
+  }
 }

@@ -1,12 +1,18 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { SupabaseModule } from './supabase/supabase.module';
-import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthModule } from './auth/auth.module';
+import { SupabaseModule } from './supabase/supabase.module';
 
 @Module({
-  imports: [SupabaseModule, AuthenticationModule, AuthModule],
+  imports: [
+    SupabaseModule,
+    AuthModule,
+    ConfigModule.forRoot({
+      envFilePath: '.env.dev',
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
